@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { CollectionsClient } from "@/components/CollectionsClient";
+import type { Filters } from "@/components/FilterBar";
 
 export const metadata: Metadata = {
   title: "Collection | Aether Motion",
 };
 
 export default function CollectionPage({ params }: { params: { collection: string } }) {
-  const { collection } = params;
-  if (!collection) return notFound();
+  const initial: Filters = { category: params.collection, sort: "featured" };
   return (
     <main className="mx-auto max-w-6xl p-6">
-      <h1 className="text-3xl font-semibold">Collection: {collection}</h1>
-      <p className="text-muted-foreground mt-2">Scoped PLP coming soon.</p>
+      <h1 className="text-3xl font-semibold capitalize">{params.collection}</h1>
+      <CollectionsClient initialFilters={initial} />
     </main>
   );
 }

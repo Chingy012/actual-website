@@ -1,0 +1,47 @@
+[
+  {
+    "id": "am-running-tee",
+    "slug": "am-running-tee",
+    "title": "Aether Motion Running Tee",
+    "price": 399.0,
+    "currency": "ZAR",
+    "category": "tops",
+    "use": "running",
+    "gender": "unisex",
+    "intensity": "high",
+    "image": "/window.svg",
+    "description": "Lightweight, breathable tee designed for high-intensity runs.",
+    "features": ["Dri-weave", "Flat seams", "Reflective trims"],
+    "sizes": ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    "id": "am-training-shorts",
+    "slug": "am-training-shorts",
+    "title": "Aether Motion Training Shorts",
+    "price": 549.0,
+    "currency": "ZAR",
+    "category": "bottoms",
+    "use": "training",
+    "gender": "men",
+    "intensity": "medium",
+    "image": "/file.svg",
+    "description": "Versatile shorts with secure pockets and 4-way stretch.",
+    "features": ["4-way stretch", "Zip pocket", "Moisture wicking"],
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": "am-yoga-tights",
+    "slug": "am-yoga-tights",
+    "title": "Aether Motion Yoga Tights",
+    "price": 699.0,
+    "currency": "ZAR",
+    "category": "bottoms",
+    "use": "yoga",
+    "gender": "women",
+    "intensity": "low",
+    "image": "/globe.svg",
+    "description": "Soft, supportive tights for studio sessions.",
+    "features": ["High waist", "Opaque fabric", "Breathable panels"],
+    "sizes": ["XS", "S", "M", "L"]
+  }
+]
