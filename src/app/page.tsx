@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { track } from "@/lib/telemetry";
+import products from "@/content/products.json";
+import { ProductCard } from "@/components/ProductCard";
 
 export default function Home() {
   return (
@@ -18,7 +20,8 @@ export default function Home() {
           <div className="mt-6 flex gap-3">
             <Link
               href="/collections"
-              className="rounded-full bg-black px-6 py-3 text-white transition-colors hover:bg-zinc-800"
+              className="rounded-full px-6 py-3 text-white transition-colors"
+              style={{ backgroundColor: "var(--color-brand)" }}
               onClick={() => track("app.home.hero_cta", { to: "/collections" })}
             >
               Shop Collections
@@ -43,8 +46,21 @@ export default function Home() {
         <PromoCard title="Find Your Flow" href="/collections?use=yoga" image="/globe.svg" />
       </section>
 
+      {/* Featured products (centered) */}
+      <section className="mt-20">
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold">Featured Products</h2>
+          <p className="mt-2 text-zinc-600">Handpicked picks to get you moving.</p>
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {products.slice(0, 8).map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
+
       {/* Icon grid */}
-      <section className="mt-16 grid gap-6 sm:grid-cols-3">
+      <section className="mt-20 grid gap-6 sm:grid-cols-3">
         <Feature icon="🚚" title="Fast Shipping" desc="Reliable delivery on every order." />
         <Feature icon="↩️" title="Easy Returns" desc="Hassle‑free returns within 30 days." />
         <Feature icon="✨" title="Quality Guaranteed" desc="Engineered fabrics, built to last." />
