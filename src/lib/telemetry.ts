@@ -5,7 +5,10 @@ export type TelemetryEvent =
   | "app.product.view"
   | "app.product.add_to_bag_click"
   | "app.world.region_selected"
-  | "app.world.poi_opened";
+  | "app.world.poi_opened"
+  | "app.cart.open"
+  | "app.cart.close"
+  | "app.cart.add_item";
 
 export function track(event: TelemetryEvent, payload: Record<string, unknown> = {}) {
   // Placeholder telemetry: logs to console; can be swapped for real client.

@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ReactQueryProvider } from "@/lib/queryClient";
+import { Providers } from "@/components/Providers";
+import { flagEnabled } from "@/lib/flags";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,14 +30,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cartEnabled = flagEnabled("cart_enabled");
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        <ReactQueryProvider>
+        <Providers cartEnabled={cartEnabled}>
+          <Header cartEnabled={cartEnabled} />
           {children}
-        </ReactQueryProvider>
-        <Footer />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

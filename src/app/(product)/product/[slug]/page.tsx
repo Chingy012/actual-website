@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import products from "@/content/products.json";
 import Image from "next/image";
 import { track } from "@/lib/telemetry";
+import { PDPClient } from "@/components/PDPClient";
+import { ProductCard } from "@/components/ProductCard";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const product = products.find((p) => p.slug === params.slug);
@@ -49,24 +51,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <h1 className="text-3xl font-semibold">{product.title}</h1>
           <p className="mt-2 text-zinc-600">{product.description}</p>
           <p className="mt-4 text-xl font-medium">{product.currency} {product.price.toFixed(2)}</p>
-          <div className="mt-6">
-            <label className="mb-2 block text-sm">Size</label>
-            <div className="flex flex-wrap gap-2">
-              {product.sizes.map((s) => (
-                <button key={s} className="rounded-md border px-3 py-2 text-sm" type="button">
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="mt-6">
-            <button
-              className="rounded-full bg-black px-6 py-3 text-white transition-colors hover:bg-zinc-800"
-              onClick={() => track("app.product.add_to_bag_click", { slug: product.slug })}
-            >
-              Add to bag
-            </button>
-          </div>
+          <PDPClient product={{ id: product.id, slug: product.slug, title: product.title, price: product.price, currency: product.currency, sizes: product.sizes }} />
           <ul className="mt-6 list-disc pl-6 text-sm text-zinc-600">
             {product.features.map((f) => (
               <li key={f}>{f}</li>
@@ -74,6 +59,17 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </ul>
         </div>
       </div>
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold">You may also like</h2>
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {products
+            .filter((p) => p.slug !== product.slug && (p.category === product.category || p.use === product.use))
+            .slice(0, 3)
+            .map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+        </div>
+      </section>
     </main>
   );
 }

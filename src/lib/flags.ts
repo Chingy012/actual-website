@@ -1,10 +1,12 @@
 export type FlagKey =
   | "world_map_enabled"
-  | "plp_experiment_v1";
+  | "plp_experiment_v1"
+  | "cart_enabled";
 
 const defaults: Record<FlagKey, boolean> = {
   world_map_enabled: true,
   plp_experiment_v1: false,
+  cart_enabled: true,
 };
 
 export function flagEnabled(key: FlagKey): boolean {

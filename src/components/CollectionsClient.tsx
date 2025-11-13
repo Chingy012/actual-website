@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FilterBar, type Filters } from "@/components/FilterBar";
 import { ProductCard } from "@/components/ProductCard";
 import type products from "@/content/products.json";
 import { track } from "@/lib/telemetry";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Product = (typeof products)[number];
 
@@ -20,7 +21,24 @@ function buildQueryString(filters: Filters) {
 }
 
 export function CollectionsClient({ initialFilters }: { initialFilters: Filters }) {
-  const [filters, setFilters] = useState<Filters>(initialFilters);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Derive filters from URL on first render
+  const urlFilters: Filters = useMemo(() => {
+    const f: Filters = { ...initialFilters };
+    const get = (k: string) => searchParams.get(k) ?? undefined;
+    const sort = searchParams.get("sort") as Filters["sort"] | null;
+    if (get("category")) f.category = get("category");
+    if (get("use")) f.use = get("use");
+    if (get("gender")) f.gender = get("gender");
+    if (get("intensity")) f.intensity = get("intensity");
+    if (sort) f.sort = sort;
+    return f;
+  }, [searchParams, initialFilters]);
+
+  const [filters, setFilters] = useState<Filters>(urlFilters);
 
   const { data, isPending } = useQuery<{ items: Product[] }>({
     queryKey: ["products", filters],
@@ -30,6 +48,12 @@ export function CollectionsClient({ initialFilters }: { initialFilters: Filters 
       return (await res.json()) as { items: Product[] };
     },
   });
+
+  // Push filter changes to URL (shallow)
+  useEffect(() => {
+    const qs = buildQueryString(filters);
+    router.replace(`${pathname}${qs}`, { scroll: false });
+  }, [filters, pathname, router]);
 
   return (
     <>
