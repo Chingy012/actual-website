@@ -7,17 +7,18 @@ import { ProductCard } from "@/components/ProductCard";
 
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-12 sm:py-16">
+    <main className="mx-auto w-full max-w-6xl px-4 py-12 sm:py-20">
       {/* Hero */}
-      <section className="grid gap-8 sm:grid-cols-2 sm:items-center">
+      <section className="grid gap-10 sm:grid-cols-[1.3fr,1fr] sm:items-center">
         <div>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Aether Motion — Engineered for Movement
+            Everyday essentials, elevated.
           </h1>
           <p className="mt-4 max-w-prose text-lg text-zinc-600">
-            High‑performance essentials for running, training, and yoga. Built light, breathable, and ready for your pace.
+            A clean, modern wardrobe of hoodies, denim, outerwear, dresses, sneakers, and accessories. Soft palettes, sharp details,
+            and all‑day comfort.
           </p>
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/collections"
               className="rounded-full px-6 py-3 text-white transition-colors"
@@ -26,33 +27,36 @@ export default function Home() {
             >
               Shop Collections
             </Link>
-            <Link
-              href="/world"
-              className="rounded-full border px-6 py-3 transition-colors hover:bg-zinc-100"
-            >
+            <Link href="/world" className="rounded-full border px-6 py-3 text-sm sm:text-base transition-colors hover:bg-zinc-100">
               World of Aether
             </Link>
           </div>
         </div>
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100">
-          <Image src="/globe.svg" alt="Aether Motion" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#f9f3e8] via-[#fdfbf7] to-[#f3f4f6]">
+          <Image
+            src="/globe.svg"
+            alt="Minimalist fashion layout"
+            fill
+            className="object-contain opacity-70 mix-blend-multiply"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
       </section>
 
       {/* Promos */}
       <section className="mt-16 grid gap-4 sm:grid-cols-3">
-        <PromoCard title="Run Light" href="/collections?use=running" image="/window.svg" />
-        <PromoCard title="Train Strong" href="/collections?use=training" image="/file.svg" />
-        <PromoCard title="Find Your Flow" href="/collections?use=yoga" image="/globe.svg" />
+        <PromoCard title="Hoodies & Sweatshirts" href="/collections?category=hoodies" image="/window.svg" />
+        <PromoCard title="Denim & Trousers" href="/collections?category=bottoms" image="/file.svg" />
+        <PromoCard title="Sneakers & Accessories" href="/collections?category=footwear" image="/globe.svg" />
       </section>
 
       {/* Featured products (centered) */}
       <section className="mt-20">
         <div className="text-center">
           <h2 className="text-2xl font-semibold">Featured Products</h2>
-          <p className="mt-2 text-zinc-600">Handpicked picks to get you moving.</p>
+          <p className="mt-2 text-zinc-600">A curated edit of hoodies, denim, dresses, sneakers, and more.</p>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {products.slice(0, 8).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
@@ -61,9 +65,9 @@ export default function Home() {
 
       {/* Icon grid */}
       <section className="mt-20 grid gap-6 sm:grid-cols-3">
-        <Feature icon="🚚" title="Fast Shipping" desc="Reliable delivery on every order." />
-        <Feature icon="↩️" title="Easy Returns" desc="Hassle‑free returns within 30 days." />
-        <Feature icon="✨" title="Quality Guaranteed" desc="Engineered fabrics, built to last." />
+        <Feature icon="🚚" title="Fast Shipping" desc="Tracked delivery on every order." />
+        <Feature icon="↩️" title="Easy Returns" desc="Free returns within 30 days." />
+        <Feature icon="✨" title="Quality Guaranteed" desc="Thoughtful fabrics, timeless fits." />
       </section>
     </main>
   );

@@ -1,10 +1,10 @@
 :root {
   /* Color */
-  --color-bg: #f8fafc; /* light slate-50 */
-  --color-fg: #0f172a; /* slate-900 */
-  --color-brand: #ff5a00; /* Nike-like orange */
-  --color-accent: #111111; /* near-black for headings */
-  --color-muted: #64748b; /* slate-500 */
+  --color-bg: #f5f0e8; /* soft beige */
+  --color-fg: #111827; /* near-black for strong readability */
+  --color-brand: #ff5a00; /* Nike-like orange accent */
+  --color-accent: #111111; /* deep neutral for headings */
+  --color-muted: #6b7280; /* soft gray for secondary text */
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -32,11 +32,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* keep mostly light for requested aesthetic */
-    --color-bg: #111315;
-    --color-fg: #e5e7eb;
-    --color-accent: #ffffff;
-    --color-muted: #94a3b8;
+    /* stay light and airy even in dark mode */
+    --color-bg: #1f2933;
+    --color-fg: #f9fafb;
+    --color-accent: #f9fafb;
+    --color-muted: #9ca3af;
   }
 }
 
