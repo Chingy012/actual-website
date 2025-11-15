@@ -34,8 +34,8 @@ export default function Home() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#f9f3e8] via-[#fdfbf7] to-[#f3f4f6]">
           <Image
-            src="/globe.svg"
-            alt="Minimalist fashion layout"
+            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80"
+            alt="Minimalist clothing rail with neutral-toned garments"
             fill
             className="object-contain opacity-70 mix-blend-multiply"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -45,9 +45,21 @@ export default function Home() {
 
       {/* Promos */}
       <section className="mt-16 grid gap-4 sm:grid-cols-3">
-        <PromoCard title="Hoodies & Sweatshirts" href="/collections?category=hoodies" image="/window.svg" />
-        <PromoCard title="Denim & Trousers" href="/collections?category=bottoms" image="/file.svg" />
-        <PromoCard title="Sneakers & Accessories" href="/collections?category=footwear" image="/globe.svg" />
+        <PromoCard
+          title="Hoodies & Sweatshirts"
+          href="/collections?category=hoodies"
+          image="https://images.unsplash.com/photo-1503341338985-6f7e1fe5af2e?auto=format&fit=crop&w=900&q=80"
+        />
+        <PromoCard
+          title="Denim & Trousers"
+          href="/collections?category=bottoms"
+          image="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80"
+        />
+        <PromoCard
+          title="Sneakers & Accessories"
+          href="/collections?category=footwear"
+          image="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=900&q=80"
+        />
       </section>
 
       {/* Featured products (centered) */}
@@ -78,7 +90,7 @@ function PromoCard({ title, href, image }: { title: string; href: string; image:
     <Link href={href} className="group relative overflow-hidden rounded-xl border bg-white">
       <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-200 group-hover:opacity-5" />
       <div className="relative aspect-[16/9] w-full bg-zinc-50">
-        <Image src={image} alt="" fill className="object-contain" sizes="(max-width: 1024px) 33vw, 33vw" />
+        <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 1024px) 33vw, 33vw" />
       </div>
       <div className="p-4">
         <h3 className="text-base font-medium">{title}</h3>

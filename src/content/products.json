@@ -9,7 +9,7 @@
     "use": "running",
     "gender": "unisex",
     "intensity": "high",
-    "image": "/window.svg",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
     "description": "Lightweight, breathable tee designed for high-intensity runs.",
     "features": ["Dri-weave", "Flat seams", "Reflective trims"],
     "sizes": ["XS", "S", "M", "L", "XL"]
@@ -24,7 +24,7 @@
     "use": "training",
     "gender": "men",
     "intensity": "medium",
-    "image": "/file.svg",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
     "description": "Versatile shorts with secure pockets and 4-way stretch.",
     "features": ["4-way stretch", "Zip pocket", "Moisture wicking"],
     "sizes": ["S", "M", "L", "XL"]
@@ -39,7 +39,7 @@
     "use": "yoga",
     "gender": "women",
     "intensity": "low",
-    "image": "/globe.svg",
+    "image": "https://images.unsplash.com/photo-1528701800489-20be3c30c1d5?auto=format&fit=crop&w=800&q=80",
     "description": "Soft, supportive tights for studio sessions.",
     "features": ["High waist", "Opaque fabric", "Breathable panels"],
     "sizes": ["XS", "S", "M", "L"]
